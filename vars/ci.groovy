@@ -8,7 +8,10 @@ def call() {
 
             stage('Build/Compile'){
                 steps {
-                    echo 'compile'
+                    script {
+
+                        common.compile()
+                    }
                 }
             }
 
@@ -21,6 +24,12 @@ def call() {
             stage('Quality control'){
                 steps {
                     echo 'quality control'
+                }
+            }
+
+            stage('upload code to central repo') {
+                steps {
+                    echo 'Upload'
                 }
             }
 
