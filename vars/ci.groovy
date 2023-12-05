@@ -1,40 +1,47 @@
 def call() {
-    pipeline {
-        agent {
-            label 'workstation'
-        }
+    try {
+        pipeline {
+            agent {
+                label 'workstation'
+            }
 
-        stages {
+            stages {
 
-            stage('Build/Compile'){
-                steps {
-                    script {
+                stage('Build/Compile') {
+                    steps {
+                        script {
 
-                        common.compile()
+                            common.compile()
+                        }
                     }
                 }
+
+                stage('Unit Test') {
+                    steps {
+                        script {
+
+                            common.unittests()
+                        }
+                    }
+                }
+
+                stage('Quality control') {
+                    steps {
+                        echo 'quality control'
+                    }
+                }
+
+                stage('upload code to central repo') {
+                    steps {
+                        echo 'Upload'
+                    }
+                }
+
             }
 
-            stage('Unit Test') {
-                steps{
-                    echo 'unit test'
-                }
-            }
-
-            stage('Quality control'){
-                steps {
-                    echo 'quality control'
-                }
-            }
-
-            stage('upload code to central repo') {
-                steps {
-                    echo 'Upload'
-                }
-            }
 
         }
-
-
+    } catch(Exception e) {
+        common.email("Failed")
     }
 }
