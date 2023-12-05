@@ -1,5 +1,5 @@
 def compile() {
     if ( app_lang == "nodejs") {
-        sh 'pwd'
+        sh 'npm install'
     }
 }
