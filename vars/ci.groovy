@@ -4,7 +4,6 @@ def call() {
 
             stage('Checkout') {
                 cleanWs()
-                git branch: 'main', url: 'https://github.com/Pappik/cart'
             }
 
             stage('Compile/Build') {
