@@ -26,9 +26,7 @@ def call() {
         }
 
         stage('upload code to central repo') {
-            steps {
                 echo 'Upload'
-            }
         }
 
     } catch (Exception e) {
