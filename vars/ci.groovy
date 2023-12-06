@@ -32,8 +32,8 @@ def call() {
                     }
                     steps {
                         script {
-                            sh "echo ${SONAR_USER}"
-                            //sh "sonar-scanner -Dsonar.host.url=http://172.31.38.43:9000 -Dsonar.login=${SONAR_USER} -Dsonar.password=${SONAR_PASS} -Dsonar.projectKey=cart"
+                            //sh "echo ${SONAR_USER}; echo "sonar" "
+                            sh "sonar-scanner -Dsonar.host.url=http://172.31.38.43:9000 -Dsonar.login=${SONAR_USER} -Dsonar.password=${SONAR_PASS} -Dsonar.projectKey=cart"
                         }
                     }
                 }
