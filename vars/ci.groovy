@@ -30,7 +30,8 @@ def call() {
                         script {
                            SONAR_USER= aws ssm get-parameters --region us-east-1 --names sonarqube.user --query Parameters[0].Value --with-decryption
                             SONAR_PASS= aws ssm get-parameters --region us-east-1 --names sonarqube.pass --query Parameters[0].Value --with-decryption
-                            sh "sonar-scanner -Dsonar.host.url=http://172.31.38.43:9000 -Dsonar.login=${SONAR_USER} -Dsonar.password=${SONAR_PASS} -Dsonar.projectKey=cart"
+                            sh "echo ${SONAR_USER}"
+                            //sh "sonar-scanner -Dsonar.host.url=http://172.31.38.43:9000 -Dsonar.login=${SONAR_USER} -Dsonar.password=${SONAR_PASS} -Dsonar.projectKey=cart"
                         }
                     }
                 }
