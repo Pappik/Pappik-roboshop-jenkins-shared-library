@@ -1,7 +1,7 @@
 def call() {
     pipeline {
         agent {
-            node('workstation')
+            label 'workstation'
         }
 
 //        parameters {
@@ -11,7 +11,10 @@ def call() {
         stages {
             stage(' init') {
                 steps {
-                    sh 'echo hello'
+                    script {
+                        sh 'echo hello'
+                    }
+
                    // sh 'terraform init -backend-config=env-${INFRA_ENV}/state.tfvars'
                 }
             }
